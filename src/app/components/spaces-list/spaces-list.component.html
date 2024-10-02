@@ -1,0 +1,64 @@
+<main>
+  <section class="banner">
+    <div class="banner-content">
+      <div class="search-container">
+        <h1>Encuentra el espacio perfecto para tu próximo evento</h1>
+        <form class="search-bar" (ngSubmit)="searchSpaces()">
+          <mat-form-field class="first-filter" appearance="outline">
+            <mat-label>Tipo de Espacio</mat-label>
+            <mat-select [(ngModel)]="searchParams.type" name="type">
+              <mat-option value="auditorium">Auditorio</mat-option>
+              <mat-option value="meeting_room">Cubículo de Reuniones</mat-option>
+              <mat-option value="conference_room">Sala de Conferencias</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Capacidad</mat-label>
+            <input matInput type="number" [(ngModel)]="searchParams.capacity" name="capacity" placeholder="Capacidad Mínima">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="searchParams.date" name="date" placeholder="Selecciona la fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" class="search-btn">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <section class="spaces-list">
+    <h2>Espacios Disponibles</h2>
+    <div class="spaces-grid">
+      <mat-card *ngFor="let space of spaces" (click)="viewSpaceDetails(space)" class="card-hover">
+        <img mat-card-image [src]="space.image_url" alt="Imagen del espacio">
+        <mat-card-content>
+          <h3>{{ space.name }}</h3>
+          <p>{{ space.description }}</p>
+          <p>Capacidad: {{ space.capacity }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <ng-container *ngIf="!isAdmin()">
+            <button mat-raised-button color="accent" (click)="goToReservationForm(space.id)">Reservar</button>
+          </ng-container>
+          <ng-container *ngIf="isAdmin()">
+            <button mat-raised-button color="primary" (click)="goToEditSpace(space.id)">Editar</button>
+          </ng-container>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card *ngIf="isAdmin()" class="card-hover new-space-card" (click)="goToCreateSpace()">
+        <mat-card-content class="new-space-content">
+          <div class="new-space-icon">
+            <mat-icon>add_circle_outline</mat-icon>
+          </div>
+          <h3>Nuevo Espacio</h3>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</main>

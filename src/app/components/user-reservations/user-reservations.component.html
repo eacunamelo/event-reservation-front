@@ -1,0 +1,20 @@
+<section class="reservations-list">
+  <h2>Mis Reservas</h2>
+  <div *ngFor="let reservation of reservations" class="reservation-card">
+    <div class="reservation-info">
+      <div class="reservation-image">
+        <img [src]="reservation.space.image_url" alt="{{ reservation.space.name }}">
+      </div>
+      <div class="reservation-details">
+        <h3>{{ reservation.event_name }}</h3>
+        <p>Espacio: {{ reservation.space.name }}</p>
+        <p>Fecha: {{ reservation.reservation_date }}</p>
+        <p>Hora: {{ reservation.start_time }} - {{ reservation.end_time }}</p>
+      </div>
+    </div>
+    <div class="reservation-actions">
+        <button mat-button color="primary" (click)="editReservation(reservation)">Modificar</button>
+        <button mat-button color="warn" (click)="deleteReservation(reservation.id)">Cancelar</button>
+      </div>
+    </div>
+</section>

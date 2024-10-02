@@ -1,0 +1,50 @@
+.reservations-list {
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .reservation-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+  }
+  
+  .reservation-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .reservation-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .reservation-image img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+  }
+  
+  .reservation-details h3 {
+    margin: 0 0 5px 0;
+  }
+  
+  .reservation-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  button {
+    margin: 5px 0;
+    min-width: 100px;
+  }
+  

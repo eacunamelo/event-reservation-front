@@ -1,0 +1,42 @@
+<div class="space-form-container">
+  <h2>{{ isEditMode ? 'Editar Espacio' : 'Crear Espacio' }}</h2>
+
+  <form [formGroup]="spaceForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-label>Nombre del Espacio</mat-label>
+      <input matInput formControlName="name" placeholder="Introduce el nombre del espacio">
+      <mat-error *ngIf="spaceForm.get('name')?.invalid && spaceForm.get('name')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" placeholder="Describe el espacio (opcional)"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Capacidad</mat-label>
+      <input matInput formControlName="capacity" type="number" placeholder="Capacidad del espacio">
+      <mat-error *ngIf="spaceForm.get('capacity')?.invalid && spaceForm.get('capacity')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Tipo de Espacio</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="meeting_room">Sala de Reuniones</mat-option>
+        <mat-option value="auditorium">Auditorio</mat-option>
+        <mat-option value="conference_room">Sala de Conferencias</mat-option>
+      </mat-select>
+      <mat-error *ngIf="spaceForm.get('type')?.invalid && spaceForm.get('type')?.touched">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+
+    <div class="file-upload">
+      <label class="file-upload-label" for="fileInput">Selecciona una imagen</label>
+      <input id="fileInput" class="file-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
+      <span class="file-selected" *ngIf="selectedFile">{{ selectedFile.name }}</span>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="spaceForm.invalid">
+      {{ isEditMode ? 'Actualizar Espacio' : 'Crear Espacio' }}
+    </button>
+  </form>
+</div>

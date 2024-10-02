@@ -1,0 +1,18 @@
+<header>
+  <mat-toolbar color="primary">
+    <span class="logo" (click)="goToSpaces()">Space Finder</span>
+    <span class="spacer"></span>
+
+    <ng-container *ngIf="!isAuthenticated">
+      <button mat-flat-button color="primary" class="auth-btn" (click)="goToLogin()">Login</button>
+      <button mat-flat-button color="accent" class="auth-btn">Sign Up</button>
+    </ng-container>
+
+    <ng-container *ngIf="isAuthenticated">
+      <button *ngIf="isAdmin()" mat-flat-button color="primary" class="auth-btn" (click)="goToSpaces()">Espacios</button>
+      <button *ngIf="!isAdmin()" mat-flat-button color="primary" class="auth-btn" (click)="goToReservations()">Mis Reservas</button>
+
+      <button mat-flat-button color="warn" class="auth-btn" (click)="logout()">Logout</button>
+    </ng-container>
+  </mat-toolbar>
+</header>

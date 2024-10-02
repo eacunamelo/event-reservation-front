@@ -1,0 +1,66 @@
+.space-form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.space-form-container h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1976d2;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #1976d2;
+    color: white;
+}
+
+button[mat-raised-button]:hover {
+    background-color: #0c47a1;
+}
+
+.mat-error {
+    color: #f44336;
+}
+
+.file-upload {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.file-upload-label {
+    background-color: #1976d2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-selected {
+    font-style: italic;
+    color: #555;
+}

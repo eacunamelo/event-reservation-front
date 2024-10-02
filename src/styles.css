@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; 
+    font-family: 'Anton', sans-serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
+    color: #000;
+}
+
+button, input, label, p {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
+}
