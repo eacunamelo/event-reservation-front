@@ -1,27 +1,71 @@
-# EventReservationFrontend
+# Event Reservation Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+Este proyecto es la parte frontend de la aplicación Event Reservation, diseñada para la gestión de reservas de espacios para eventos.
 
-## Development server
+## Requisitos del Sistema
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js (>= 14.x)
+- Angular CLI (>= 13.x)
+- Git (opcional)
 
-## Code scaffolding
+## Instalación
+Clonar el Proyecto
+Clona este repositorio en tu máquina local usando Git:
+git clone https://github.com/tuusuario/event-reservation-front.git
+cd event-reservation-front
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalar Dependencias
+Instala todas las dependencias necesarias utilizando npm:
+npm install
 
-## Build
+## Configuración del Entorno
+El proyecto Angular utiliza un archivo de entorno para conectar con el backend. Crea un archivo environment.ts en la carpeta src/environments si no está creado, o modifica el existente con las siguientes variables:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api'  // Aquí va la URL de tu API en el backend.
+};
 
-## Running unit tests
+Asegúrate de que la URL apunta al backend que configuraste previamente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ejecutar el Proyecto
+Inicia el servidor de desarrollo de Angular:
 
-## Running end-to-end tests
+ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+El proyecto estará disponible en http://localhost:4200/.
 
-## Further help
+## Estructura del Proyecto
+- src/: Carpeta principal del código fuente.
+- app/: Contiene los componentes, servicios, y demás lógica de la aplicación.
+- assets/: Contiene las imágenes, archivos y recursos estáticos.
+- environments/: Configuración de entornos (producción y desarrollo).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Rutas Principales
+- /spaces: Página principal donde se listan los espacios disponibles para reservas.
+- /reservations: Página donde el usuario puede ver y gestionar sus reservas.
+- /admin/spaces: Página para administradores, donde pueden gestionar los espacios.
+
+## Uso de la Aplicación
+
+### Crear una Reserva
+El usuario navega a la página de espacios y selecciona uno.
+En la página del formulario, ingresa el nombre del evento, la fecha, la hora de inicio y de fin.
+Al hacer clic en Reservar, se envía la solicitud al backend.
+Editar Espacios (Solo para Admins)
+Los administradores pueden navegar a la página de gestión de espacios.
+Seleccionan un espacio para editar o pueden crear uno nuevo utilizando el formulario.
+Pueden cargar imágenes para los espacios y definir la capacidad y tipo de espacio.
+
+
+## Consideraciones Adicionales
+
+### Autenticación JWT
+El frontend está integrado con autenticación JWT. Una vez que el usuario se autentica (login), el token JWT se guarda en el localStorage y se utiliza para todas las solicitudes protegidas.
+
+### Protección de Rutas
+Las rutas de administración están protegidas por un guardia de autenticación (authGuard) y otro de roles (adminGuard).
+
+### Integración con Backend
+El frontend interactúa con el backend para obtener datos sobre espacios y reservas a través de las APIs documentadas en Swagger.
