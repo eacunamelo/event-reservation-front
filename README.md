@@ -9,12 +9,6 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 - Angular CLI (>= 13.x)
 - Git (opcional)
 
-## Instalación
-Clonar el Proyecto
-Clona este repositorio en tu máquina local usando Git:
-git clone https://github.com/tuusuario/event-reservation-front.git
-cd event-reservation-front
-
 ## Instalar Dependencias
 Instala todas las dependencias necesarias utilizando npm:
 npm install
